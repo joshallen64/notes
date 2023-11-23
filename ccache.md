@@ -57,9 +57,18 @@ Here are my notes from trying to get `ccache` working with flutter. 
     end
     
     ```
-5. Build `flutter build ios`
+5. Set settings for `ccache`:
+   ```
+   export CCACHE_SLOPPINESS=clang_index_store,file_stat_matches,include_file_ctime,include_file_mtime,ivfsoverlay,pch_defines,modules,system_headers,time_macros
+   export CCACHE_FILECLONE=true
+   export CCACHE_DEPEND=true
+   export CCACHE_INODECACHE=true
+   ```
+   
+6.  Build `flutter build ios`
    - First build took: 411.7s
-6. run `ccache -s`
+   - Second build took 42.5s
+7. run `ccache -s` to see if the caching is working
 
 ---
 
